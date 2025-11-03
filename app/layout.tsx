@@ -32,7 +32,7 @@ export default function RootLayout({
           <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
             {/* Logo */}
             <div className="p-6 border-b border-gray-200">
-              <div className="text-2xl font-bold text-gray-900">Mirrors</div>
+              <div className="text-2xl font-bold text-gray-900">ZIGGY BENT</div>
             </div>
 
             {/* Navigation Links */}
@@ -40,7 +40,7 @@ export default function RootLayout({
               <ul className="space-y-2">
                 <li>
                   <a href="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md">
-                    Mirrors
+                    ZIGGY BENT
                   </a>
                 </li>
                 <li>
@@ -97,7 +97,7 @@ export default function RootLayout({
             <header className="bg-white border-b border-gray-200 px-8 py-4">
               <div className="flex justify-end">
                 <button className="px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800">
-                  Sign up for Mirrors
+                  Sign up for ZIGGY BENT
                 </button>
               </div>
             </header>
