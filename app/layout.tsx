@@ -22,88 +22,56 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased font-inter`}
-      >
-        <div className="flex flex-row min-h-screen bg-gray-50">
-          {/* Sidebar */}
-          <aside className="w-[240px] min-h-screen flex flex-col justify-between bg-white border-r border-gray-200">
-            <div>
-              {/* Logo */}
-              <div className="p-6 border-b border-gray-200">
-                <Link href="/">
-                  <Display size="md" className="text-gray-900">ZIGGY BENT</Display>
-                </Link>
-              </div>
+      <body className={`${inter.variable} antialiased font-inter flex h-screen`}>
+        {/* Sidebar - fixed width, full height */}
+        <nav className="w-[200px] min-h-screen flex flex-col justify-between p-6 bg-white border-r border-gray-200">
+          <div className="flex flex-col gap-8">
+            {/* Logo */}
+            <Link href="/">
+              <Display size="md">ZIGGY BENT</Display>
+            </Link>
 
-              {/* Navigation Links */}
-              <nav className="p-4">
-                <ul className="space-y-2">
-                  <li>
-                    <a href="/mirrors" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                      <Body className="text-gray-700">Mirrors</Body>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/garden" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                      <Body className="text-gray-700">Field Notes</Body>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/vanitas" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                      <Body className="text-gray-700">Vanitas</Body>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/resources" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                      <Body className="text-gray-700">Resources</Body>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/news" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                      <Body className="text-gray-700">News</Body>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+            {/* Nav items */}
+            <div className="flex flex-col gap-4">
+              <Body>Mirrors</Body>
+              <Body>Field Notes</Body>
+              <Body>Vanitas</Body>
+              <Body>Resources</Body>
+              <Body>News</Body>
             </div>
-
-            {/* Social Icons - Stick to bottom */}
-            <div className="p-4 border-t border-gray-200">
-              <div className="flex gap-4 px-4">
-                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
-                  <Twitter size={18} />
-                </a>
-                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
-                  <Youtube size={18} />
-                </a>
-                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
-                  <Instagram size={18} />
-                </a>
-                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
-                  <Globe size={18} />
-                </a>
-              </div>
-            </div>
-          </aside>
-
-          {/* Main Content Area */}
-          <div className="flex-1 flex flex-col">
-            {/* Top Bar */}
-            <header className="bg-white border-b border-gray-200 px-8 py-4">
-              <div className="flex justify-end">
-                <button className="px-6 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors">
-                  <Body className="text-white">Sign up for Mirrors</Body>
-                </button>
-              </div>
-            </header>
-
-            {/* Page Content */}
-            <main className="flex-1 p-8">
-              {children}
-            </main>
           </div>
-        </div>
+
+          {/* Social icons - pushed to bottom */}
+          <div className="flex gap-4">
+            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
+              <Twitter size={18} />
+            </a>
+            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
+              <Youtube size={18} />
+            </a>
+            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
+              <Instagram size={18} />
+            </a>
+            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
+              <Globe size={18} />
+            </a>
+          </div>
+        </nav>
+
+        {/* Main content - fills remaining space */}
+        <main className="flex-1 flex flex-col">
+          {/* Header with Sign up button */}
+          <header className="flex justify-end p-6">
+            <button className="rounded-full bg-gray-900 text-white px-6 py-2">
+              Sign up for Mirrors
+            </button>
+          </header>
+
+          {/* Page content */}
+          <div className="flex-1">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );
