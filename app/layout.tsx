@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Display, Body } from '@/components/typography';
 import Link from 'next/link';
+import { Twitter, Youtube, Instagram, Globe } from 'lucide-react';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -67,24 +68,18 @@ export default function RootLayout({
 
             {/* Social Icons */}
             <div className="p-4 border-t border-gray-200">
-              <div className="flex gap-3 justify-center">
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="X">
-                  𝕏
+              <div className="flex gap-4 justify-center">
+                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
+                  <Twitter size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="YouTube">
-                  ▶
+                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
+                  <Youtube size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="GitHub">
-                  ⚡
+                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
+                  <Instagram size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="Instagram">
-                  📷
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="TikTok">
-                  ♪
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900" aria-label="Discord">
-                  💬
+                <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
+                  <Globe size={20} />
                 </a>
               </div>
             </div>
