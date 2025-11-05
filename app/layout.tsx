@@ -38,11 +38,6 @@ export default function RootLayout({
             <nav className="flex-1 p-4">
               <ul className="space-y-2">
                 <li>
-                  <a href="/" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                    <Body className="text-gray-700">ZIGGY BENT</Body>
-                  </a>
-                </li>
-                <li>
                   <a href="/garden" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
                     <Body className="text-gray-700">Field Notes</Body>
                   </a>
@@ -96,7 +91,7 @@ export default function RootLayout({
             <header className="bg-white border-b border-gray-200 px-8 py-4">
               <div className="flex justify-end">
                 <button className="px-6 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800">
-                  <Body className="text-white">Sign up for ZIGGY BENT</Body>
+                  <Body className="text-white">Sign up for Mirrors</Body>
                 </button>
               </div>
             </header>
