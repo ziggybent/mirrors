@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Display, Body } from '@/components/typography';
+import Link from 'next/link';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +29,9 @@ export default function RootLayout({
           <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
             {/* Logo */}
             <div className="p-6 border-b border-gray-200">
-              <Display size="md" className="text-gray-900">ZIGGY BENT</Display>
+              <Link href="/">
+                <Display size="md" className="text-gray-900">ZIGGY BENT</Display>
+              </Link>
             </div>
 
             {/* Navigation Links */}
@@ -41,7 +44,7 @@ export default function RootLayout({
                 </li>
                 <li>
                   <a href="/garden" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
-                    <Body className="text-gray-700">Garden</Body>
+                    <Body className="text-gray-700">Field Notes</Body>
                   </a>
                 </li>
                 <li>
