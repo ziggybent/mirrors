@@ -234,13 +234,13 @@ export default function TypographyTestPage() {
               Follow these simple steps to begin your journey with ZIGGY BENT:
             </Body>
             <ol className="list-decimal list-inside space-y-2 ml-4">
-              <Body as="li" className="text-gray-700">
+              <Body className="text-gray-700">
                 Create your account and verify your email
               </Body>
-              <Body as="li" className="text-gray-700">
+              <Body className="text-gray-700">
                 Set up your workspace and invite team members
               </Body>
-              <Body as="li" className="text-gray-700">
+              <Body className="text-gray-700">
                 Start creating with our powerful tools
               </Body>
             </ol>
@@ -265,19 +265,19 @@ export default function TypographyTestPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-300">
-                  <Body as="th" size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
+                  <Body size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
                     Category
                   </Body>
-                  <Body as="th" size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
+                  <Body size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
                     Size
                   </Body>
-                  <Body as="th" size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
+                  <Body size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
                     Font Size
                   </Body>
-                  <Body as="th" size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
+                  <Body size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
                     Line Height
                   </Body>
-                  <Body as="th" size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
+                  <Body size="sm" className="text-left py-3 px-4 text-gray-900 font-semibold">
                     Weight
                   </Body>
                 </tr>
@@ -299,19 +299,19 @@ export default function TypographyTestPage() {
                   { category: 'Body', size: 'XS', fontSize: '12px', lineHeight: '16px', weight: '400' },
                 ].map((row, idx) => (
                   <tr key={idx} className="border-b border-gray-200">
-                    <Body as="td" size="sm" className="py-3 px-4 text-gray-700">
+                    <Body size="sm" className="py-3 px-4 text-gray-700">
                       {row.category}
                     </Body>
-                    <Body as="td" size="sm" className="py-3 px-4 text-gray-900 font-medium">
+                    <Body size="sm" className="py-3 px-4 text-gray-900 font-medium">
                       {row.size}
                     </Body>
-                    <Body as="td" size="sm" className="py-3 px-4 text-gray-700">
+                    <Body size="sm" className="py-3 px-4 text-gray-700">
                       {row.fontSize}
                     </Body>
-                    <Body as="td" size="sm" className="py-3 px-4 text-gray-700">
+                    <Body size="sm" className="py-3 px-4 text-gray-700">
                       {row.lineHeight}
                     </Body>
-                    <Body as="td" size="sm" className="py-3 px-4 text-gray-700">
+                    <Body size="sm" className="py-3 px-4 text-gray-700">
                       {row.weight}
                     </Body>
                   </tr>
