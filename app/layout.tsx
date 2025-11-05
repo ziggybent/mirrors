@@ -68,18 +68,18 @@ export default function RootLayout({
 
             {/* Social Icons */}
             <div className="p-4 border-t border-gray-200">
-              <div className="flex gap-4 justify-center">
+              <div className="flex gap-4 px-4">
                 <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
-                  <Twitter size={20} />
+                  <Twitter size={18} />
                 </a>
                 <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
-                  <Youtube size={20} />
+                  <Youtube size={18} />
                 </a>
                 <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
-                  <Instagram size={20} />
+                  <Instagram size={18} />
                 </a>
                 <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
-                  <Globe size={20} />
+                  <Globe size={18} />
                 </a>
               </div>
             </div>
