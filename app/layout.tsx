@@ -38,6 +38,11 @@ export default function RootLayout({
             <nav className="flex-1 p-4">
               <ul className="space-y-2">
                 <li>
+                  <a href="/mirrors" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
+                    <Body className="text-gray-700">Mirrors</Body>
+                  </a>
+                </li>
+                <li>
                   <a href="/garden" className="block px-4 py-2 hover:bg-gray-100 rounded-md">
                     <Body className="text-gray-700">Field Notes</Body>
                   </a>
