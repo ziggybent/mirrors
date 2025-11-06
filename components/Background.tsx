@@ -1,9 +1,11 @@
 import React from 'react';
 
 export type BackgroundType = 'gradient' | 'solid' | 'image' | 'video';
+export type Theme = 'light' | 'dark';
 
 export interface BackgroundProps {
   type?: BackgroundType;
+  theme?: Theme;
   // Gradient props
   gradientFrom?: string;
   gradientVia?: string;
@@ -24,6 +26,7 @@ export interface BackgroundProps {
 
 export const Background: React.FC<BackgroundProps> = ({
   type = 'gradient',
+  theme = 'light',
   // Gradient defaults - peach → pink → magenta
   gradientFrom = '#FFD4C4',
   gradientVia = '#FFB3D9',
@@ -41,11 +44,27 @@ export const Background: React.FC<BackgroundProps> = ({
   overlayOpacity = 0.5,
   overlayColor = '#000000',
 }) => {
+  // Theme-based backgrounds override type
+  if (theme === 'dark') {
+    return (
+      <div className="fixed inset-0 -z-10 bg-black transition-colors duration-300" />
+    );
+  }
+
+  // Light theme uses gradient
+  if (theme === 'light' && type === 'gradient') {
+    return (
+      <div
+        className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}] transition-colors duration-300`}
+      />
+    );
+  }
+
   // Render gradient background
   if (type === 'gradient') {
     return (
       <div
-        className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}]`}
+        className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}] transition-colors duration-300`}
       />
     );
   }
@@ -54,7 +73,7 @@ export const Background: React.FC<BackgroundProps> = ({
   if (type === 'solid') {
     return (
       <div
-        className={`fixed inset-0 -z-10 bg-[${solidColor}]`}
+        className={`fixed inset-0 -z-10 bg-[${solidColor}] transition-colors duration-300`}
       />
     );
   }
