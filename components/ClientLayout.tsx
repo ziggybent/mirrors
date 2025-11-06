@@ -16,7 +16,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <Background theme={theme} />
 
       {/* Logo - fixed top-left */}
-      <Link href="/" className="fixed top-6 left-6 z-50">
+      <Link href="/" className="fixed top-20 left-[150px] z-50">
         <Display
           size="md"
           className={`transition-colors duration-300 ${
@@ -28,7 +28,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </Link>
 
       {/* Nav items - fixed left, vertically centered */}
-      <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
+      <nav className="fixed left-[150px] top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
         <Body className={`transition-colors duration-300 ${
           theme === 'dark' ? 'text-white' : 'text-black'
         }`}>
@@ -57,7 +57,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       </nav>
 
       {/* Social icons - fixed bottom-left */}
-      <div className="fixed bottom-6 left-6 z-50 flex gap-4">
+      <div className="fixed bottom-20 left-[150px] z-50 flex gap-4">
         <a
           href="#"
           className={`transition-colors duration-300 ${
@@ -106,7 +106,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       {/* Sign up button - fixed top-right */}
       <button
-        className={`fixed top-6 right-6 z-50 rounded-full px-6 py-2 transition-colors duration-300 ${
+        className={`fixed top-20 right-[150px] z-50 rounded-full px-6 py-2 transition-colors duration-300 ${
           theme === 'dark'
             ? 'bg-white text-black hover:bg-gray-200'
             : 'bg-gray-900 text-white hover:bg-gray-800'
