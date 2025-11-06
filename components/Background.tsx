@@ -28,9 +28,9 @@ export const Background: React.FC<BackgroundProps> = ({
   type = 'gradient',
   theme = 'light',
   // Gradient defaults - peach → pink → magenta
-  gradientFrom = '#FFD4C4',
-  gradientVia = '#FFB3D9',
-  gradientTo = '#FF1493',
+  gradientFrom = '#f8cba5',
+  gradientVia = '#ee93c1',
+  gradientTo = '#e45bdc',
   gradientDirection = 'to-b',
   // Solid color default
   solidColor = '#ffffff',
