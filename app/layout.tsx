@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Display, Body } from '@/components/typography';
+import Background from '@/components/Background';
 import Link from 'next/link';
 import { Twitter, Youtube, Instagram, Globe } from 'lucide-react';
 
@@ -22,7 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased font-inter bg-gradient-to-b from-[#FFD4C4] via-[#FFB3D9] to-[#FF1493] min-h-screen`}>
+      <body className={`${inter.variable} antialiased font-inter min-h-screen`}>
+        <Background />
         {/* Logo - fixed top-left */}
         <Link href="/" className="fixed top-6 left-6 z-50">
           <Display size="md">ZIGGY BENT</Display>
