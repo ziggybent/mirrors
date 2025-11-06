@@ -22,55 +22,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased font-inter flex h-screen`}>
-        {/* Sidebar - fixed width, full height */}
-        <nav className="w-[200px] min-h-screen flex flex-col justify-between p-6 bg-white border-r border-gray-200">
-          <div className="flex flex-col gap-8">
-            {/* Logo */}
-            <Link href="/">
-              <Display size="md">ZIGGY BENT</Display>
-            </Link>
+      <body className={`${inter.variable} antialiased font-inter bg-gradient-to-b from-[#FFD4C4] via-[#FFB3D9] to-[#FF1493] min-h-screen`}>
+        {/* Logo - fixed top-left */}
+        <Link href="/" className="fixed top-6 left-6 z-50">
+          <Display size="md">ZIGGY BENT</Display>
+        </Link>
 
-            {/* Nav items */}
-            <div className="flex flex-col gap-4">
-              <Body>Mirrors</Body>
-              <Body>Field Notes</Body>
-              <Body>Vanitas</Body>
-              <Body>Resources</Body>
-              <Body>News</Body>
-            </div>
-          </div>
-
-          {/* Social icons - pushed to bottom */}
-          <div className="flex gap-4">
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
-              <Twitter size={18} />
-            </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
-              <Youtube size={18} />
-            </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
-              <Instagram size={18} />
-            </a>
-            <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
-              <Globe size={18} />
-            </a>
-          </div>
+        {/* Nav items - fixed left, vertically centered */}
+        <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
+          <Body>Mirrors</Body>
+          <Body>Field Notes</Body>
+          <Body>Vanitas</Body>
+          <Body>Resources</Body>
+          <Body>News</Body>
         </nav>
 
-        {/* Main content - fills remaining space */}
-        <main className="flex-1 flex flex-col bg-gradient-to-b from-[#FFD4C4] via-[#FFB3D9] to-[#FF1493] min-h-screen">
-          {/* Header with Sign up button */}
-          <header className="flex justify-end p-6">
-            <button className="rounded-full bg-gray-900 text-white px-6 py-2">
-              Sign up for Mirrors
-            </button>
-          </header>
+        {/* Social icons - fixed bottom-left */}
+        <div className="fixed bottom-6 left-6 z-50 flex gap-4">
+          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
+            <Twitter size={18} />
+          </a>
+          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
+            <Youtube size={18} />
+          </a>
+          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
+            <Instagram size={18} />
+          </a>
+          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
+            <Globe size={18} />
+          </a>
+        </div>
 
-          {/* Page content */}
-          <div className="flex-1">
-            {children}
-          </div>
+        {/* Sign up button - fixed top-right */}
+        <button className="fixed top-6 right-6 z-50 rounded-full bg-gray-900 text-white px-6 py-2">
+          Sign up for Mirrors
+        </button>
+
+        {/* Main content - full width */}
+        <main className="w-full min-h-screen">
+          {children}
         </main>
       </body>
     </html>
