@@ -59,7 +59,7 @@ export default function RootLayout({
         </nav>
 
         {/* Main content - fills remaining space */}
-        <main className="flex-1 flex flex-col">
+        <main className="flex-1 flex flex-col bg-gradient-to-b from-[#FFD4C4] via-[#FFB3D9] to-[#FF1493] min-h-screen">
           {/* Header with Sign up button */}
           <header className="flex justify-end p-6">
             <button className="rounded-full bg-gray-900 text-white px-6 py-2">
