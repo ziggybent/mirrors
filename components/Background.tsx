@@ -44,18 +44,33 @@ export const Background: React.FC<BackgroundProps> = ({
   overlayOpacity = 0.5,
   overlayColor = '#000000',
 }) => {
+  // Convert gradientDirection to CSS linear-gradient direction
+  const directionMap: Record<string, string> = {
+    'to-b': 'to bottom',
+    'to-t': 'to top',
+    'to-r': 'to right',
+    'to-l': 'to left',
+    'to-br': 'to bottom right',
+    'to-bl': 'to bottom left',
+    'to-tr': 'to top right',
+    'to-tl': 'to top left',
+  };
+
   // Theme-based backgrounds override type
   if (theme === 'dark') {
     return (
-      <div className="fixed inset-0 -z-10 bg-black transition-colors duration-300" />
+      <div className="fixed inset-0 -z-10 bg-black transition-all duration-300" />
     );
   }
 
-  // Light theme uses gradient
+  // Light theme uses gradient (default colors: peach → pink → magenta)
   if (theme === 'light' && type === 'gradient') {
     return (
       <div
-        className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}] transition-colors duration-300`}
+        className="fixed inset-0 -z-10 transition-all duration-300"
+        style={{
+          backgroundImage: `linear-gradient(${directionMap[gradientDirection] || 'to bottom'}, ${gradientFrom}, ${gradientVia}, ${gradientTo})`,
+        }}
       />
     );
   }
@@ -64,7 +79,10 @@ export const Background: React.FC<BackgroundProps> = ({
   if (type === 'gradient') {
     return (
       <div
-        className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}] transition-colors duration-300`}
+        className="fixed inset-0 -z-10 transition-all duration-300"
+        style={{
+          backgroundImage: `linear-gradient(${directionMap[gradientDirection] || 'to bottom'}, ${gradientFrom}, ${gradientVia}, ${gradientTo})`,
+        }}
       />
     );
   }
@@ -73,7 +91,8 @@ export const Background: React.FC<BackgroundProps> = ({
   if (type === 'solid') {
     return (
       <div
-        className={`fixed inset-0 -z-10 bg-[${solidColor}] transition-colors duration-300`}
+        className="fixed inset-0 -z-10 transition-all duration-300"
+        style={{ backgroundColor: solidColor }}
       />
     );
   }
@@ -133,7 +152,10 @@ export const Background: React.FC<BackgroundProps> = ({
   // Fallback to gradient if invalid type or missing required props
   return (
     <div
-      className={`fixed inset-0 -z-10 bg-gradient-${gradientDirection} from-[${gradientFrom}] via-[${gradientVia}] to-[${gradientTo}]`}
+      className="fixed inset-0 -z-10 transition-all duration-300"
+      style={{
+        backgroundImage: `linear-gradient(${directionMap[gradientDirection] || 'to bottom'}, ${gradientFrom}, ${gradientVia}, ${gradientTo})`,
+      }}
     />
   );
 };
