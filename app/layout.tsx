@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Display, Body } from '@/components/typography';
-import Background from '@/components/Background';
-import Link from 'next/link';
-import { Twitter, Youtube, Instagram, Globe } from 'lucide-react';
+import ClientLayout from '@/components/ClientLayout';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,46 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased font-inter min-h-screen`}>
-        <Background />
-        {/* Logo - fixed top-left */}
-        <Link href="/" className="fixed top-6 left-6 z-50">
-          <Display size="md">ZIGGY BENT</Display>
-        </Link>
-
-        {/* Nav items - fixed left, vertically centered */}
-        <nav className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
-          <Body>Mirrors</Body>
-          <Body>Field Notes</Body>
-          <Body>Vanitas</Body>
-          <Body>Resources</Body>
-          <Body>News</Body>
-        </nav>
-
-        {/* Social icons - fixed bottom-left */}
-        <div className="fixed bottom-6 left-6 z-50 flex gap-4">
-          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="X (Twitter)">
-            <Twitter size={18} />
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="YouTube">
-            <Youtube size={18} />
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Instagram">
-            <Instagram size={18} />
-          </a>
-          <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors" aria-label="Website">
-            <Globe size={18} />
-          </a>
-        </div>
-
-        {/* Sign up button - fixed top-right */}
-        <button className="fixed top-6 right-6 z-50 rounded-full bg-gray-900 text-white px-6 py-2">
-          Sign up for Mirrors
-        </button>
-
-        {/* Main content - full width */}
-        <main className="w-full min-h-screen">
+        <ClientLayout>
           {children}
-        </main>
+        </ClientLayout>
       </body>
     </html>
   );
