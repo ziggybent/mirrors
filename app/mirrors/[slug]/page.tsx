@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 
 interface MirrorPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 }
 
 export default async function MirrorPage({ params }: MirrorPageProps) {
-  const mirror = await getContentItem('mirrors', params.slug);
+  const { slug } = await params;
+  const mirror = await getContentItem('mirrors', slug);
 
   if (!mirror) {
     notFound();
