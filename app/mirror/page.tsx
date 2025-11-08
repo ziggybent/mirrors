@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Display } from '@/components/typography/Display';
-import { Body } from '@/components/typography/Body';
+import { Display, Body, H3 } from '@/components/typography';
 
 // Define the five sequences
 const sequences = [
@@ -47,12 +46,9 @@ export default function MirrorPage() {
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       {/* Header */}
       <header className="mb-12">
-        <Display size="2xl" className="mb-4">
-          Mirrors
-        </Display>
-        <Body size="lg" className="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Display size="xl">Mirrors</Display>
+        <Body size="lg" className="mt-4 opacity-70 max-w-3xl">
           A systematic exploration of awareness, construction, and what remains when identification dissolves.
-          Each sequence builds on direct observation rather than belief.
         </Body>
       </header>
 
@@ -64,7 +60,7 @@ export default function MirrorPage() {
               <button
                 onClick={() => setActiveTab(sequence.id)}
                 className={`
-                  pb-4 text-lg font-medium transition-colors
+                  pb-4 font-inter text-body-lg font-medium transition-colors
                   ${activeTab === sequence.id
                     ? 'text-gray-900 dark:text-gray-100 border-b-2 border-gray-900 dark:border-gray-100'
                     : 'text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
@@ -94,11 +90,11 @@ export default function MirrorPage() {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 {/* Left column: Category and Date */}
                 <div className="md:col-span-1">
-                  <div className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-500 mb-1">
+                  <span className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-500 mb-1 block font-inter">
                     {sequences.find(s => s.id === mirror.sequence)?.title}
-                  </div>
+                  </span>
                   {mirror.date && (
-                    <time className="text-sm text-gray-600 dark:text-gray-400">
+                    <time className="text-sm text-gray-600 dark:text-gray-400 font-inter">
                       {new Date(mirror.date).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'short',
@@ -110,13 +106,13 @@ export default function MirrorPage() {
 
                 {/* Right column: Title and Description */}
                 <div className="md:col-span-3">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <H3 className="mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {mirror.title}
-                  </h3>
+                  </H3>
                   {mirror.excerpt && (
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <Body className="text-gray-600 dark:text-gray-400">
                       {mirror.excerpt}
-                    </p>
+                    </Body>
                   )}
                 </div>
               </div>
