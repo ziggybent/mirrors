@@ -29,11 +29,13 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       {/* Nav items - fixed left, vertically centered */}
       <nav className="fixed left-[50px] top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
-        <Body className={`transition-colors duration-300 ${
-          theme === 'dark' ? 'text-white' : 'text-black'
-        }`}>
-          Mirrors
-        </Body>
+        <Link href="/mirror">
+          <Body className={`transition-colors duration-300 hover:opacity-70 ${
+            theme === 'dark' ? 'text-white' : 'text-black'
+          }`}>
+            Mirror
+          </Body>
+        </Link>
         <Body className={`transition-colors duration-300 ${
           theme === 'dark' ? 'text-white' : 'text-black'
         }`}>

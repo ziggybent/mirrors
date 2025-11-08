@@ -2,6 +2,7 @@
 title: "The Nature of Constructions"
 date: "2025-01-08"
 excerpt: "Understanding the avatars we build and inhabit."
+sequence: "mechanism"
 ---
 
 # The Nature of Constructions

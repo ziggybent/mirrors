@@ -2,6 +2,7 @@
 title: "Awareness, Not Identity"
 date: "2025-01-07"
 excerpt: "The difference between awareness and the constructed self."
+sequence: "recognition"
 ---
 
 # Awareness, Not Identity
