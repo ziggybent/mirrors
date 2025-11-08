@@ -11,6 +11,7 @@ export interface ContentMetadata {
   excerpt: string;
   image: string;
   downloadable?: boolean;
+  sequence?: string;
 }
 
 export interface ContentItem extends ContentMetadata {
@@ -96,6 +97,7 @@ export async function getContentItem(
       excerpt: data.excerpt || '',
       image: data.image || '',
       downloadable: data.downloadable,
+      sequence: data.sequence,
       content: contentHtml,
     };
   } catch (error) {
@@ -159,6 +161,7 @@ export function getContentMetadata(type: string): (ContentMetadata & { slug: str
       excerpt: data.excerpt || '',
       image: data.image || '',
       downloadable: data.downloadable,
+      sequence: data.sequence,
     };
   });
 

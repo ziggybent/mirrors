@@ -2,6 +2,7 @@
 title: "The Field That Contains Everything"
 date: "2025-01-09"
 excerpt: "Awareness is not inside you. You are inside awareness."
+sequence: "context"
 ---
 
 # The Field That Contains Everything
