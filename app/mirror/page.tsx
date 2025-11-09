@@ -44,8 +44,8 @@ export default function MirrorPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-16">
-      {/* Header */}
-      <header className="mb-8">
+      {/* Hero Section */}
+      <header>
         <Display size="2xl">Mirrors</Display>
         <Body size="lg" className="mt-4 text-[#858585] mb-12 max-w-3xl">
           A systematic exploration of awareness, construction, and what remains when identification dissolves.
@@ -89,19 +89,21 @@ export default function MirrorPage() {
             >
               <article>
                 {/* Category label */}
-                <span className="text-xs uppercase tracking-wide text-[#858585] mb-2 block font-inter">
+                <Body size="xs" as="span" className="uppercase tracking-wide text-[#858585] mb-2 block">
                   {sequences.find(s => s.id === mirror.sequence)?.title}
-                </span>
+                </Body>
 
                 {/* Date */}
                 {mirror.date && (
-                  <time className="text-sm text-[#858585] mb-4 block font-inter">
-                    {new Date(mirror.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </time>
+                  <Body size="sm" as="span" className="text-[#858585] mb-4 block">
+                    <time>
+                      {new Date(mirror.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                    </time>
+                  </Body>
                 )}
 
                 {/* Title */}
@@ -111,7 +113,7 @@ export default function MirrorPage() {
 
                 {/* Description */}
                 {mirror.excerpt && (
-                  <Body size="default" className="text-[#d0d0d0]">
+                  <Body className="text-[#d0d0d0]">
                     {mirror.excerpt}
                   </Body>
                 )}
