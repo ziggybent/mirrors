@@ -3,13 +3,34 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: 'Inter', system-ui, sans-serif;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Font families */
+  --font-family-inter: var(--font-inter), system-ui, sans-serif;
+
+  /* Display sizes */
+  --font-size-display-2xl: 72px;
+  --font-size-display-xl: 60px;
+  --font-size-display-lg: 48px;
+  --font-size-display-md: 36px;
+
+  /* Heading sizes */
+  --font-size-h1: 30px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 18px;
+
+  /* Body sizes */
+  --font-size-body-xl: 20px;
+  --font-size-body-lg: 18px;
+  --font-size-body: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-body-xs: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +44,77 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  /* Display typography */
+  .text-display-2xl {
+    font-size: 72px;
+    line-height: 90px;
+    font-weight: 600;
+  }
+  .text-display-xl {
+    font-size: 60px;
+    line-height: 72px;
+    font-weight: 600;
+  }
+  .text-display-lg {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 600;
+  }
+  .text-display-md {
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+  }
+
+  /* Heading typography */
+  .text-h1 {
+    font-size: 30px;
+    line-height: 38px;
+    font-weight: 600;
+  }
+  .text-h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+  .text-h3 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+  .text-h4 {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+
+  /* Body typography */
+  .text-body-xl {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+  .text-body {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .text-body-sm {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-body-xs {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
 }
