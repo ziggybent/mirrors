@@ -2,15 +2,35 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Display, Body, H3 } from '@/components/typography';
+import { Display, Body, H2, H3 } from '@/components/typography';
 
-// Define the five sequences
+// Define the five sequences with descriptions
 const sequences = [
-  { id: 'recognition', title: 'Recognition' },
-  { id: 'mechanism', title: 'Mechanism' },
-  { id: 'instrument', title: 'Instrument' },
-  { id: 'context', title: 'Context' },
-  { id: 'possibility', title: 'Possibility' },
+  {
+    id: 'recognition',
+    title: 'Recognition',
+    description: 'The first step: distinguishing awareness from constructed identity'
+  },
+  {
+    id: 'mechanism',
+    title: 'Mechanism',
+    description: 'How constructions form, persist, and dissolve'
+  },
+  {
+    id: 'instrument',
+    title: 'Instrument',
+    description: 'Tools and practices for working with awareness'
+  },
+  {
+    id: 'context',
+    title: 'Context',
+    description: 'The larger framework: culture, language, and shared reality'
+  },
+  {
+    id: 'possibility',
+    title: 'Possibility',
+    description: 'What becomes available when identification loosens'
+  },
 ];
 
 interface Mirror {
@@ -22,7 +42,7 @@ interface Mirror {
 }
 
 export default function MirrorPage() {
-  const [activeTab, setActiveTab] = useState<string>('recognition');
+  const [activeTab, setActiveTab] = useState<string | null>(null);
   const [mirrors, setMirrors] = useState<Mirror[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,10 +60,10 @@ export default function MirrorPage() {
       });
   }, []);
 
-  const filteredMirrors = mirrors.filter(mirror => mirror.sequence === activeTab);
+  const filteredMirrors = activeTab ? mirrors.filter(mirror => mirror.sequence === activeTab) : [];
 
   return (
-    <div className="max-w-7xl mx-auto px-8 py-16">
+    <div className="max-w-4xl mx-auto px-8 py-16">
       {/* Hero Section */}
       <header>
         <Display size="md">Mirrors</Display>
@@ -52,40 +72,75 @@ export default function MirrorPage() {
         </Body>
       </header>
 
-      {/* Tabs */}
-      <nav className="mb-16 border-b border-gray-800">
-        <ul className="flex gap-8">
-          {sequences.map((sequence) => (
-            <li key={sequence.id}>
-              <button
-                onClick={() => setActiveTab(sequence.id)}
-                className={`
-                  pb-4 font-inter text-body-lg font-medium transition-colors
-                  ${activeTab === sequence.id
-                    ? 'text-white border-b-2 border-white'
-                    : 'text-[#858585] hover:text-gray-300'
-                  }
-                `}
-              >
-                {sequence.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {/* Back button and Tabs - only show when a tab is active */}
+      {activeTab && (
+        <>
+          <button
+            onClick={() => setActiveTab(null)}
+            className="mb-8 text-[#858585] hover:text-white transition-colors flex items-center gap-2"
+          >
+            <span>←</span>
+            <Body size="sm" as="span">Back to Sections</Body>
+          </button>
+          <nav className="mb-16 border-b border-gray-800">
+            <ul className="flex gap-8">
+              {sequences.map((sequence) => (
+                <li key={sequence.id}>
+                  <button
+                    onClick={() => setActiveTab(sequence.id)}
+                    className={`
+                      pb-4 font-inter text-body-lg font-medium transition-colors
+                      ${activeTab === sequence.id
+                        ? 'text-white border-b-2 border-white'
+                        : 'text-[#858585] hover:text-gray-300'
+                      }
+                    `}
+                  >
+                    {sequence.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </>
+      )}
 
       {/* Content List */}
       <div>
-        {isLoading ? (
+        {!activeTab ? (
+          /* Section Cards - Show when no tab is selected */
+          <div className="space-y-8">
+            {sequences.map((sequence) => (
+              <button
+                key={sequence.id}
+                onClick={() => setActiveTab(sequence.id)}
+                className="group block w-full text-left"
+              >
+                <article className="py-8 border-b border-gray-800 hover:border-gray-700 transition-colors">
+                  {/* Section Title */}
+                  <H2 className="text-white mb-3 group-hover:opacity-80 transition-opacity">
+                    {sequence.title}
+                  </H2>
+
+                  {/* Section Description */}
+                  <Body className="text-[#d0d0d0]">
+                    {sequence.description}
+                  </Body>
+                </article>
+              </button>
+            ))}
+          </div>
+        ) : isLoading ? (
           <div className="text-center py-12">
             <Body className="text-[#858585]">Loading...</Body>
           </div>
         ) : filteredMirrors.length > 0 ? (
+          /* Individual Mirrors - Show when a tab is selected */
           filteredMirrors.map((mirror) => (
             <Link
               key={mirror.slug}
               href={`/mirror/${mirror.sequence}/${mirror.slug}`}
-              className="group block mb-12 max-w-4xl"
+              className="group block mb-12"
             >
               <article>
                 {/* Category label */}
