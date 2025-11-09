@@ -72,38 +72,27 @@ export default function MirrorPage() {
         </Body>
       </header>
 
-      {/* Back button and Tabs - only show when a tab is active */}
-      {activeTab && (
-        <>
-          <button
-            onClick={() => setActiveTab(null)}
-            className="mb-8 text-[#858585] hover:text-white transition-colors flex items-center gap-2"
-          >
-            <span>←</span>
-            <Body size="sm" as="span">Back to Sections</Body>
-          </button>
-          <nav className="mb-16 border-b border-gray-800">
-            <ul className="flex gap-8">
-              {sequences.map((sequence) => (
-                <li key={sequence.id}>
-                  <button
-                    onClick={() => setActiveTab(sequence.id)}
-                    className={`
-                      pb-4 font-inter text-body-lg font-medium transition-colors
-                      ${activeTab === sequence.id
-                        ? 'text-white border-b-2 border-white'
-                        : 'text-[#858585] hover:text-gray-300'
-                      }
-                    `}
-                  >
-                    {sequence.title}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </>
-      )}
+      {/* Horizontal Tabs - Always visible */}
+      <nav className="mb-16 border-b border-gray-800">
+        <ul className="flex gap-8">
+          {sequences.map((sequence) => (
+            <li key={sequence.id}>
+              <button
+                onClick={() => setActiveTab(activeTab === sequence.id ? null : sequence.id)}
+                className={`
+                  pb-4 font-inter text-body-lg font-medium transition-colors
+                  ${activeTab === sequence.id
+                    ? 'text-white border-b-2 border-white'
+                    : 'text-[#858585] hover:text-gray-300'
+                  }
+                `}
+              >
+                {sequence.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Content List */}
       <div>
