@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Twitter, Youtube, Instagram, Globe } from 'lucide-react';
-import { Display, Body } from '@/components/typography';
+import { H3, Body } from '@/components/typography';
 import Background from '@/components/Background';
 import ThemeToggle from '@/components/ThemeToggle';
 import { ThemeProvider, useTheme } from '@/context/ThemeContext';
@@ -17,14 +17,13 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       {/* Logo - fixed top-left */}
       <Link href="/" className="fixed top-10 left-[50px] z-50">
-        <Display
-          size="md"
+        <H3
           className={`transition-colors duration-300 ${
             theme === 'dark' ? 'text-white' : 'text-black'
           }`}
         >
           ZIGGY BENT
-        </Display>
+        </H3>
       </Link>
 
       {/* Nav items - fixed left, vertically centered */}
