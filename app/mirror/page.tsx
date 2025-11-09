@@ -46,7 +46,7 @@ export default function MirrorPage() {
     <div className="max-w-7xl mx-auto px-8 py-16">
       {/* Hero Section */}
       <header>
-        <Display size="2xl">Mirrors</Display>
+        <Display size="md">Mirrors</Display>
         <Body size="lg" className="mt-4 text-[#858585] mb-12 max-w-3xl">
           A systematic exploration of awareness, construction, and what remains when identification dissolves.
         </Body>
