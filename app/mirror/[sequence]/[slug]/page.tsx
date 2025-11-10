@@ -2,6 +2,7 @@ import { getContentItem, getAllSlugs, getContentByType } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { H1, Body } from '@/components/typography';
 
 interface MirrorPageProps {
   params: Promise<{
@@ -63,22 +64,24 @@ export default async function MirrorPage({ params }: MirrorPageProps) {
   const sequenceInfo = SEQUENCE_INFO[sequence];
 
   return (
-    <article className="max-w-3xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-      <nav className="mb-8 flex items-center gap-2 text-sm">
-        <Link href="/mirror" className="text-blue-600 hover:text-blue-800">
-          Mirror
+    <article className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 lg:py-20">
+      {/* Breadcrumb Navigation */}
+      <nav className="mb-8 lg:mb-12 flex items-center gap-2">
+        <Link href="/mirror" className="hover:opacity-70 transition-opacity">
+          <Body size="sm" className="text-[#858585]">Mirror</Body>
         </Link>
-        <span className="text-gray-400">/</span>
+        <Body size="sm" className="text-[#858585]">/</Body>
         <Link
-          href={`/mirror/${sequence}`}
-          className="text-blue-600 hover:text-blue-800"
+          href={`/mirror#${sequence}`}
+          className="hover:opacity-70 transition-opacity"
         >
-          {sequenceInfo.title}
+          <Body size="sm" className="text-[#858585]">{sequenceInfo.title}</Body>
         </Link>
       </nav>
 
+      {/* Feature Image */}
       {mirror.image && (
-        <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
+        <div className="relative w-full h-64 sm:h-80 lg:h-96 mb-8 lg:mb-12 rounded-lg overflow-hidden">
           <Image
             src={mirror.image}
             alt={mirror.title}
@@ -89,28 +92,41 @@ export default async function MirrorPage({ params }: MirrorPageProps) {
         </div>
       )}
 
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{mirror.title}</h1>
+      {/* Header */}
+      <header className="mb-10 lg:mb-12">
+        <H1 className="text-white mb-4 lg:mb-6">{mirror.title}</H1>
 
         {mirror.date && (
-          <time className="text-gray-500 block mb-2">
+          <Body size="sm" as="time" className="text-[#858585] block mb-4">
             {new Date(mirror.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
-          </time>
+          </Body>
         )}
 
         {mirror.downloadable && (
-          <span className="inline-block text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded">
-            Downloadable Content
+          <span className="inline-block">
+            <Body size="sm" className="bg-white/10 text-white px-3 py-1.5 rounded">
+              Downloadable Content
+            </Body>
           </span>
         )}
       </header>
 
+      {/* Content */}
       <div
-        className="prose prose-lg max-w-none"
+        className="prose prose-lg prose-invert max-w-none
+          prose-headings:text-white prose-headings:font-semibold
+          prose-p:text-[#d0d0d0] prose-p:leading-relaxed
+          prose-a:text-white prose-a:underline hover:prose-a:opacity-70
+          prose-strong:text-white prose-strong:font-semibold
+          prose-ul:text-[#d0d0d0] prose-ol:text-[#d0d0d0]
+          prose-li:marker:text-[#858585]
+          prose-blockquote:border-l-white/20 prose-blockquote:text-[#d0d0d0]
+          prose-code:text-white prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+          prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10"
         dangerouslySetInnerHTML={{ __html: mirror.content }}
       />
     </article>

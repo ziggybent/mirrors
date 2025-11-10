@@ -63,24 +63,24 @@ export default function MirrorPage() {
   const filteredMirrors = activeTab ? mirrors.filter(mirror => mirror.sequence === activeTab) : [];
 
   return (
-    <div className="max-w-3xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+    <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 lg:py-20">
       {/* Hero Section */}
-      <header>
+      <header className="mb-12 lg:mb-16">
         <Display size="md">Mirrors</Display>
-        <Body size="lg" className="mt-4 text-[#858585] mb-12">
+        <Body size="lg" className="mt-6 text-[#858585] max-w-2xl">
           A systematic exploration of awareness, construction, and what remains when identification dissolves.
         </Body>
       </header>
 
       {/* Horizontal Tabs - Always visible */}
-      <nav className="mb-16 border-b border-gray-800">
-        <ul className="flex gap-8">
+      <nav className="mb-12 lg:mb-16 border-b border-gray-800 overflow-x-auto">
+        <ul className="flex gap-6 lg:gap-8 min-w-max pb-px">
           {sequences.map((sequence) => (
             <li key={sequence.id}>
               <button
                 onClick={() => setActiveTab(activeTab === sequence.id ? null : sequence.id)}
                 className={`
-                  pb-4 font-inter text-body-lg font-medium transition-colors
+                  pb-3 lg:pb-4 font-inter text-body font-medium transition-colors whitespace-nowrap
                   ${activeTab === sequence.id
                     ? 'text-white border-b-2 border-white'
                     : 'text-[#858585] hover:text-gray-300'
@@ -98,16 +98,16 @@ export default function MirrorPage() {
       <div>
         {!activeTab ? (
           /* Section Cards - Show when no tab is selected */
-          <div className="space-y-8">
+          <div className="space-y-0">
             {sequences.map((sequence) => (
               <button
                 key={sequence.id}
                 onClick={() => setActiveTab(sequence.id)}
                 className="group block w-full text-left"
               >
-                <article className="py-8 border-b border-gray-800 hover:border-gray-700 transition-colors">
+                <article className="py-6 lg:py-8 border-b border-gray-800 hover:border-gray-700 transition-colors">
                   {/* Section Title */}
-                  <H2 className="text-white mb-3 group-hover:opacity-80 transition-opacity">
+                  <H2 className="text-white mb-3 lg:mb-4 group-hover:opacity-80 transition-opacity">
                     {sequence.title}
                   </H2>
 
@@ -125,45 +125,47 @@ export default function MirrorPage() {
           </div>
         ) : filteredMirrors.length > 0 ? (
           /* Individual Mirrors - Show when a tab is selected */
-          filteredMirrors.map((mirror) => (
-            <Link
-              key={mirror.slug}
-              href={`/mirror/${mirror.sequence}/${mirror.slug}`}
-              className="group block mb-12"
-            >
-              <article>
-                {/* Category label */}
-                <Body size="xs" as="span" className="uppercase tracking-wide text-[#858585] mb-2 block">
-                  {sequences.find(s => s.id === mirror.sequence)?.title}
-                </Body>
-
-                {/* Date */}
-                {mirror.date && (
-                  <Body size="sm" as="span" className="text-[#858585] mb-4 block">
-                    <time>
-                      {new Date(mirror.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric',
-                      })}
-                    </time>
+          <div className="space-y-10 lg:space-y-12">
+            {filteredMirrors.map((mirror) => (
+              <Link
+                key={mirror.slug}
+                href={`/mirror/${mirror.sequence}/${mirror.slug}`}
+                className="group block"
+              >
+                <article>
+                  {/* Category label */}
+                  <Body size="xs" as="span" className="uppercase tracking-wide text-[#858585] mb-2 block">
+                    {sequences.find(s => s.id === mirror.sequence)?.title}
                   </Body>
-                )}
 
-                {/* Title */}
-                <H3 className="text-white mb-3 group-hover:opacity-80 transition-opacity">
-                  {mirror.title}
-                </H3>
+                  {/* Date */}
+                  {mirror.date && (
+                    <Body size="sm" as="span" className="text-[#858585] mb-3 lg:mb-4 block">
+                      <time>
+                        {new Date(mirror.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </time>
+                    </Body>
+                  )}
 
-                {/* Description */}
-                {mirror.excerpt && (
-                  <Body className="text-[#d0d0d0]">
-                    {mirror.excerpt}
-                  </Body>
-                )}
-              </article>
-            </Link>
-          ))
+                  {/* Title */}
+                  <H3 className="text-white mb-3 lg:mb-4 group-hover:opacity-80 transition-opacity">
+                    {mirror.title}
+                  </H3>
+
+                  {/* Description */}
+                  {mirror.excerpt && (
+                    <Body className="text-[#d0d0d0]">
+                      {mirror.excerpt}
+                    </Body>
+                  )}
+                </article>
+              </Link>
+            ))}
+          </div>
         ) : (
           <div className="text-center py-12">
             <Body className="text-[#858585] mb-4">
