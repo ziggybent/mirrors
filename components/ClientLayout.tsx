@@ -278,7 +278,7 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <ThemeToggle />
 
       {/* Main content - with proper responsive spacing */}
-      <main className="w-full min-h-screen pt-24 lg:pt-0 lg:pl-[240px] lg:pr-[80px]">
+      <main className="w-full min-h-screen lg:pl-[240px] lg:pr-[80px]">
         {children}
       </main>
     </>

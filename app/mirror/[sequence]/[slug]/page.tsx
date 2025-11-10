@@ -64,7 +64,7 @@ export default async function MirrorPage({ params }: MirrorPageProps) {
   const sequenceInfo = SEQUENCE_INFO[sequence];
 
   return (
-    <article className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 lg:py-20">
+    <article className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-8 sm:pt-32 sm:pb-12 lg:py-20">
       {/* Breadcrumb Navigation */}
       <nav className="mb-8 lg:mb-12 flex items-center gap-2">
         <Link href="/mirror" className="hover:opacity-70 transition-opacity">

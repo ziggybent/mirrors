@@ -63,7 +63,7 @@ export default function MirrorPage() {
   const filteredMirrors = activeTab ? mirrors.filter(mirror => mirror.sequence === activeTab) : [];
 
   return (
-    <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8 sm:py-12 lg:py-20">
+    <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-8 sm:pt-32 sm:pb-12 lg:py-20">
       {/* Hero Section */}
       <header className="mb-12 lg:mb-16">
         <Display size="md">Mirrors</Display>
