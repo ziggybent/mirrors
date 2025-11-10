@@ -59,7 +59,7 @@ export default async function SequencePage({ params }: SequencePageProps) {
   const sequenceInfo = SEQUENCE_INFO[sequence];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 pt-24 pb-8 sm:pt-32 sm:pb-12 lg:py-20">
       <header className="mb-8">
         <Link
           href="/mirror"
