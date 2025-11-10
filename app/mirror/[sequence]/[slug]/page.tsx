@@ -97,13 +97,15 @@ export default async function MirrorPage({ params }: MirrorPageProps) {
         <H1 className="text-white mb-4 lg:mb-6">{mirror.title}</H1>
 
         {mirror.date && (
-          <Body size="sm" as="time" className="text-[#858585] block mb-4">
-            {new Date(mirror.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </Body>
+          <time className="block mb-4">
+            <Body size="sm" className="text-[#858585]">
+              {new Date(mirror.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </Body>
+          </time>
         )}
 
         {mirror.downloadable && (
