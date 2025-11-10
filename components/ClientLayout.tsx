@@ -14,11 +14,13 @@ const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change and reset scroll position
   useEffect(() => {
     setIsMobileMenuOpen(false);
     // Ensure body overflow is reset on route change
     document.body.style.overflow = '';
+    // Force scroll to top on navigation
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   // Handle escape key to close menu
