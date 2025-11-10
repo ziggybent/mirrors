@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Twitter, Youtube, Instagram, Globe, Menu, X } from 'lucide-react';
 import { H3, Body } from '@/components/typography';
 import Background from '@/components/Background';
@@ -10,7 +11,15 @@ import { ThemeProvider, useTheme } from '@/context/ThemeContext';
 
 const LayoutContent: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { theme } = useTheme();
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    // Ensure body overflow is reset on route change
+    document.body.style.overflow = '';
+  }, [pathname]);
 
   // Handle escape key to close menu
   useEffect(() => {
