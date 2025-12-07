@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-sans);
+}
+
+/* Custom utilities */
+@utility font-serif {
+  font-family: var(--font-sans);
+}
+
+@utility font-sans {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+  /* gray-800 */
+  font-family: var(--font-sans);
+  /* Global sans-serif stack */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base typography defaults */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Typography refinements */
+/* p styles removed to avoid conflicts with utility classes. Article content uses prose class. */
