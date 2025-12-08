@@ -1,0 +1,27 @@
+# IDENTITY: THE ART MACHINE
+We are building 'Ziggy Bent' - A Curiosity Engine & Wind Chime.
+* **Philosophy:** Field over Construction. Wu Wei (Effortless Action).
+* **UX:** No Grids. No Standard Menus. Navigation is 'Drifting' (Random/Linear).
+* **Voice:** Hemingway. Simple. Punchy. 'See' not 'Observe.'
+
+# TECH STACK (STRICT)
+* **Framework:** Next.js 15 (App Router).
+* **Styling:** Tailwind CSS.
+* **Backend:** Supabase (Auth/Database).
+* **Analytics:** PostHog.
+* **Deployment:** Vercel.
+
+# THE DICTIONARY (Domain Language)
+* **Wind Chime:** The core logic. A random pairing of 1 Artefact + 1 Mirror.
+* **Prism:** The central navigation toggle. Clicking it refracts the user to a new state (e.g., shuffles the chime).
+* **Rummaging:** The user experience of finding content. Linear discovery (Next -> Next), not hierarchical browsing.
+
+# DATA MODEL (Mental Map)
+* **Two Decks:** The content is split into 'mirrors' (Text/Reflections) and 'artefacts' (Received Images).
+* **Mechanic:** We fetch random rows from these two decks to create a 'Chime.'
+
+# DEVELOPMENT RULES (THE LAW)
+1. **Schema-First:** Never write a UI component until the Supabase Type definition exists in types/ or utils/supabase/.
+2. **Anti-Hallucination:** Do not invent imports. Check package.json first.
+3. **Simplicity:** If a feature requires complex state management, stop and ask: 'Is this Construction grasping?'
+4. **No Old Construction:** Do not build grids, sidebars, or standard dashboards.
