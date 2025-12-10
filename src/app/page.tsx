@@ -62,7 +62,7 @@ export default async function Home() {
                   className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   <RefreshCw className="w-4 h-4" />
-                  <span>Prism</span>
+                  <span>Rotate</span>
                 </button>
               </form>
               <button className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
