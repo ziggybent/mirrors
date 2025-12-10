@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import EmailSignup from '@/components/EmailSignup';
 import { Search, Link as LinkIcon, RefreshCw } from 'lucide-react';
-import { getRandomMirror, getRandomArtefact, getArtefactImageUrl } from '@/lib/supabase';
+import { getRandomMirror, getRandomEncounter, getEncounterImageUrl } from '@/lib/supabase';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 
@@ -12,7 +12,7 @@ async function refreshChime() {
 
 export default async function Home() {
   const mirror = await getRandomMirror()
-  const artefact = await getRandomArtefact()
+  const encounter = await getRandomEncounter()
 
   if (!mirror) {
     return (
@@ -31,14 +31,14 @@ export default async function Home() {
         </h1>
       </header>
 
-      {artefact && (
+      {encounter && (
         <>
           <div className="mb-6 max-w-[1000px] mx-auto">
-            <Link href={`/artefact/${artefact.slug}`} className="block group">
+            <Link href={`/encounter/${encounter.slug}`} className="block group">
               <div className="relative w-full aspect-[3/2] overflow-hidden bg-gray-100">
                 <Image
-                  src={getArtefactImageUrl(artefact.image_path)}
-                  alt={artefact.alt_text || artefact.title}
+                  src={getEncounterImageUrl(encounter.image_path)}
+                  alt={encounter.alt_text || encounter.title}
                   fill
                   className="object-cover transition-opacity duration-300 group-hover:opacity-90"
                   sizes="(max-width: 1000px) 100vw, 1000px"
@@ -49,11 +49,11 @@ export default async function Home() {
 
           <div className="max-w-[1000px] mx-auto mb-24 flex justify-between items-center">
             <Link
-              href={`/artefact/${artefact.slug}`}
+              href={`/encounter/${encounter.slug}`}
               className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
             >
               <Search className="w-4 h-4" />
-              <span>View Artefact</span>
+              <span>View Encounter</span>
             </Link>
             <div className="flex items-center gap-4">
               <form action={refreshChime}>

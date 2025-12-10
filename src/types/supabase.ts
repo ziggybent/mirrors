@@ -1,4 +1,4 @@
-export type Artefact = {
+export type Encounter = {
     id: string
     slug: string
     title: string

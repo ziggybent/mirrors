@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import EmailSignup from '@/components/EmailSignup';
-import { getMirrorBySlug, getRandomArtefact, getArtefactBySlug, getArtefactImageUrl } from '@/lib/supabase';
+import { getMirrorBySlug, getRandomEncounter, getEncounterBySlug, getEncounterImageUrl } from '@/lib/supabase';
 import Image from 'next/image';
 
 export const dynamic = 'force-dynamic'
@@ -11,10 +11,10 @@ export default async function MirrorPage({
     searchParams 
 }: { 
     params: Promise<{ slug: string }>;
-    searchParams: Promise<{ artefact?: string }>;
+    searchParams: Promise<{ encounter?: string }>;
 }) {
     const { slug } = await params
-    const { artefact: artefactParam } = await searchParams
+    const { encounter: encounterParam } = await searchParams
     
     const mirror = await getMirrorBySlug(slug)
 
@@ -22,13 +22,13 @@ export default async function MirrorPage({
         return notFound()
     }
 
-    // Wind Chime logic: pair mirror with artefact
-    let artefact = null
+    // Wind Chime logic: pair mirror with encounter
+    let encounter = null
     
-    if (artefactParam) {
-        artefact = await getArtefactBySlug(artefactParam)
+    if (encounterParam) {
+        encounter = await getEncounterBySlug(encounterParam)
     } else {
-        artefact = await getRandomArtefact()
+        encounter = await getRandomEncounter()
     }
 
     return (
@@ -40,14 +40,14 @@ export default async function MirrorPage({
                 </h1>
             </header>
 
-            {artefact && (
+            {encounter && (
                 <>
                     <div className="mb-6 max-w-[1000px] mx-auto">
-                        <Link href={`/artefact/${artefact.slug}`} className="block group">
+                        <Link href={`/encounter/${encounter.slug}`} className="block group">
                             <div className="relative w-full aspect-[3/2] overflow-hidden bg-gray-100">
                                 <Image
-                                    src={getArtefactImageUrl(artefact.image_path)}
-                                    alt={artefact.alt_text || artefact.title}
+                                    src={getEncounterImageUrl(encounter.image_path)}
+                                    alt={encounter.alt_text || encounter.title}
                                     fill
                                     className="object-cover transition-opacity duration-300 group-hover:opacity-90"
                                     sizes="(max-width: 1000px) 100vw, 1000px"
@@ -58,10 +58,10 @@ export default async function MirrorPage({
 
                     <div className="max-w-[1000px] mx-auto mb-24 flex justify-between items-center">
                         <Link 
-                            href={`/artefact/${artefact.slug}`} 
+                            href={`/encounter/${encounter.slug}`} 
                             className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
                         >
-                            View Artefact
+                            View Encounter
                         </Link>
                         <button className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
                             Share

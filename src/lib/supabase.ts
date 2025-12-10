@@ -1,13 +1,13 @@
 import { createClient } from '@/utils/supabase/server'
-import type { Artefact, Mirror } from '@/types/supabase'
+import type { Encounter, Mirror } from '@/types/supabase'
 
 const STORAGE_URL = 'https://mmjolnasqnsxbwletxzl.supabase.co/storage/v1/object/public/artefacts'
 
-export async function getRandomArtefact(): Promise<Artefact | null> {
+export async function getRandomEncounter(): Promise<Encounter | null> {
   const supabase = await createClient()
   
   const { data, error } = await supabase
-    .from('artefacts')
+    .from('encounters')
     .select('*')
     .eq('status', 'available')
     .not('image_path', 'is', null)
@@ -15,13 +15,13 @@ export async function getRandomArtefact(): Promise<Artefact | null> {
     .order('id', { ascending: false }) // Temporary: will use random()
   
   if (error) {
-    console.error('Error fetching random artefact:', error)
+    console.error('Error fetching random encounter:', error)
     return null
   }
   
-  // Get random item from available artefacts
+  // Get random item from available encounters
   const { data: allData } = await supabase
-    .from('artefacts')
+    .from('encounters')
     .select('*')
     .eq('status', 'available')
     .not('image_path', 'is', null)
@@ -45,17 +45,17 @@ export async function getRandomMirror(): Promise<Mirror | null> {
   return allData[randomIndex]
 }
 
-export async function getArtefactBySlug(slug: string): Promise<Artefact | null> {
+export async function getEncounterBySlug(slug: string): Promise<Encounter | null> {
   const supabase = await createClient()
   
   const { data, error } = await supabase
-    .from('artefacts')
+    .from('encounters')
     .select('*')
     .eq('slug', slug)
     .single()
   
   if (error) {
-    console.error('Error fetching artefact:', error)
+    console.error('Error fetching encounter:', error)
     return null
   }
   
@@ -79,7 +79,6 @@ export async function getMirrorBySlug(slug: string): Promise<Mirror | null> {
   return data
 }
 
-export function getArtefactImageUrl(imagePath: string): string {
+export function getEncounterImageUrl(imagePath: string): string {
   return `${STORAGE_URL}/${imagePath}`
 }
-
