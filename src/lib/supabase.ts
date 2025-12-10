@@ -6,6 +6,8 @@ const STORAGE_URL = 'https://mmjolnasqnsxbwletxzl.supabase.co/storage/v1/object/
 export async function getRandomEncounter(): Promise<Encounter | null> {
   const supabase = await createClient()
   
+  console.log('[getRandomEncounter] Starting query...')
+  
   const { data, error } = await supabase
     .from('encounters')
     .select('*')
@@ -14,22 +16,42 @@ export async function getRandomEncounter(): Promise<Encounter | null> {
     .limit(1)
     .order('id', { ascending: false }) // Temporary: will use random()
   
+  console.log('[getRandomEncounter] Initial query result:', { data, error })
+  
   if (error) {
-    console.error('Error fetching random encounter:', error)
+    console.error('[getRandomEncounter] Error fetching random encounter:', error)
     return null
   }
   
   // Get random item from available encounters
-  const { data: allData } = await supabase
+  const { data: allData, error: allError } = await supabase
     .from('encounters')
     .select('*')
     .eq('status', 'available')
     .not('image_path', 'is', null)
   
-  if (!allData || allData.length === 0) return null
+  console.log('[getRandomEncounter] All encounters query result:', { 
+    count: allData?.length || 0, 
+    error: allError,
+    firstItem: allData?.[0]
+  })
+  
+  if (!allData || allData.length === 0) {
+    console.log('[getRandomEncounter] No encounters found, returning null')
+    return null
+  }
   
   const randomIndex = Math.floor(Math.random() * allData.length)
-  return allData[randomIndex]
+  const selectedEncounter = allData[randomIndex]
+  
+  console.log('[getRandomEncounter] Selected encounter:', {
+    randomIndex,
+    slug: selectedEncounter.slug,
+    title: selectedEncounter.title,
+    image_path: selectedEncounter.image_path
+  })
+  
+  return selectedEncounter
 }
 
 export async function getRandomMirror(): Promise<Mirror | null> {
