@@ -59,7 +59,7 @@ export default async function Home() {
               <form action={refreshChime}>
                 <button
                   type="submit"
-                  className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+                  className="group flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors cursor-pointer hover:opacity-70"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span>Rotate</span>
