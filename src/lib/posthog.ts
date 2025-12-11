@@ -14,9 +14,7 @@ export function initPostHog() {
       api_host: host,
       autocapture: true,
       capture_pageview: false, // We'll handle this manually in the provider
-      session_recording: {
-        enabled: true,
-      },
+      disable_session_recording: false,
       loaded: (posthog) => {
         if (process.env.NODE_ENV === 'development') {
           console.log('PostHog loaded')
