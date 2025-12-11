@@ -55,9 +55,7 @@ export async function subscribeToKit(email: string): Promise<SubscribeResult> {
           'X-Kit-Api-Key': apiKey,
         },
         body: JSON.stringify({
-          subscriber: {
-            email_address: email,
-          },
+          email_address: email,
         }),
       }
     )
